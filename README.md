@@ -1,16 +1,68 @@
 # Analysis-of-the-crisis-in-the-Gaming-market-using-NLP-and-Graph
-Starting from 2023 and continuing into 2024, the video game industry has faced massive layoffs. In 2023, over 10,000 jobs were lost, and a further 9,500 layoffs occurred just between January and May 2024 [7]. These layoffs have had resonating effects on both established video game development studios and emerging companies, affecting employees, projects, and the overall landscape of the video game industry. The layoffs have led to the cancellation of several video games, the closure of development studios, or their sale by their parent companies, causing thousands of employees to lose their jobs.
+This project aims to analyze the current crisis in the gaming industry, focusing on the mass layoffs in 2023 and 2024. We applied various Natural Language Processing (NLP) techniques, including Sentiment Analysis and Named Entity Recognition (NER), combined with graph analysis, to explore user sentiment, feedback, and discussions surrounding the topic on Reddit.
 
-In recent years, unfortunately, layoffs in the video game industry have become increasingly common. In 2023, we witnessed almost weekly layoffs across the sector, and unfortunately, it seems that 2024 will surpass this figure. The video game industry is larger and generates more money than films and music combined, bringing in $180 billion in 2021 alone [9]. It is also a sector that is becoming riskier and more expensive every year, as AAA games require more time and money to be made (around $300 million), leading to a situation where even a single flop can sink a studio or publisher. Additionally, the entire industry desperately needs unions to help protect its millions of workers when things don't go as planned.
+Table of Contents
+Project Overview
+Dataset
+Methods
+Data Collection
+Preprocessing
+Sentiment Analysis
+Named Entity Recognition (NER)
+Graph Analysis
+Results
+Sentiment Trends
+Entity Recognition
+Graph Insights
+Technologies Used
+Conclusion
+Project Overview
+The gaming industry has experienced significant layoffs, with over 10,000 jobs lost in 2023 and an additional 9,500 between January and May 2024. This project seeks to analyze user opinions and sentiment towards these events by gathering data from Reddit and applying various NLP and graph analysis techniques. The primary goals are to:
 
-Main Causes:
-1) Increase in development costs: The costs of developing games are constantly rising, making it more difficult for companies to maintain profitability.
-2) Changing consumer preferences: The tastes and habits of consumers are changing, which can make it difficult to predict which games will be successful.
-3) Post-pandemic slowdown: The end of the pandemic has led to a decrease in interest in video games, which had seen a boom during lockdown periods.
-4) Other factors: Other factors, such as global economic fluctuations and technological innovations, contribute to the sector's precariousness.
+Understand user sentiment toward the layoffs and the current state of the gaming industry.
+Identify the key concerns and criticisms expressed by users.
+Investigate patterns of user interaction through graph analysis.
+Dataset
+The data was collected from the Reddit community, specifically the r/gaming subreddit, which has over 40 million users. We selected seven posts related to the gaming industry's decline and layoffs, scraping around 3,000 comments.
 
-After observing the significant impact of layoffs in the video game industry in 2023 and 2024, we posed fundamental questions, imagining that a company had asked us to conduct an analysis to answer the following questions:
-- What are the prevailing opinions and sentiments of users regarding the situation in the gaming market in 2024?
-- How can user feedback on social media be correlated to the layoffs that occurred at video game companies?
-- What are the main concerns and critical issues that emerged from the analysis of comments and online posts?
-To answer these questions, we decided to analyze user sentiment expressed on social media like Reddit, then move on to a part of Named Entity Recognition, and finally connect the various comments through graphs, applying the relevant techniques.
+Methods
+Data Collection
+We used the Apify web scraping platform to gather comments from seven relevant posts in the r/gaming subreddit. The posts included discussions about industry decline, layoffs, and consumer frustrations.
+
+Preprocessing
+The preprocessing steps involved:
+
+Removal of deleted comments and missing values.
+Cleaning of text by removing HTML tags, mentions, hashtags, numbers, and stopwords (excluding negations for sentiment accuracy).
+Text normalization, including conversion to lowercase.
+Sentiment Analysis
+We employed the cardiffnlp/twitter-roberta-base model, a pre-trained version of RoBERTa fine-tuned on Twitter data, for sentiment classification. The model assigns comments to one of three categories: positive, negative, or neutral. Sentiment scores were also provided, offering a confidence level for each classification.
+
+Named Entity Recognition (NER)
+Using a pre-trained BERT model (dbmdz/bert-large-cased-finetuned-conll03-english), we performed NER to identify named entities such as organizations and video games mentioned in the comments. This helped us pinpoint which companies and games were frequently discussed in relation to the layoffs.
+
+Graph Analysis
+We applied graph techniques to examine the interaction patterns among users who commented on the selected Reddit posts. Metrics such as node degree, community detection, and message frequency were used to understand the structure of these discussions.
+
+Results
+Sentiment Trends
+31% of the comments expressed negative sentiment, indicating strong dissatisfaction with the gaming industry's current state.
+The highest number of negative comments occurred in January 2024, correlating with the largest wave of layoffs.
+Entity Recognition
+Companies: The most frequently mentioned companies were generally perceived negatively, with the exception of Nintendo and Blizzard, which had more positive feedback.
+Games: While most games were criticized, titles like Diablo and Overwatch received a relatively higher amount of positive feedback.
+Graph Insights
+Graph analysis revealed interesting interaction patterns, including:
+
+Prominent discussions between a few highly active users.
+Clustering of users into communities based on their interactions, with clear topic distinctions.
+Technologies Used
+Python
+Hugging Face Transformers
+Apify for web scraping
+NetworkX for graph analysis
+Matplotlib for data visualization
+Conclusion
+The project provided valuable insights into how the Reddit gaming community perceives the recent layoffs and broader industry issues. Sentiment analysis showed significant dissatisfaction, especially in early 2024. The NER and graph analyses helped highlight key companies, games, and user interactions.
+
+
